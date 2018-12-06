@@ -4,6 +4,7 @@ const environment = process.env.NODE_ENV || 'development';
 const config = require('./knexfile')[environment];
 const database = require('knex')(config);
 const app = express();
+const cafeCleanUp = require('./utils/dataCleaner');
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
@@ -124,20 +125,6 @@ app.get('/api/v1/cafes', (request, response) => {
 			error: error.message
 		}))
 })
-
-const cafeCleanUp = queriedCafes => {
-	return queriedCafes.reduce((uniqueCafes, cafe, index) => {
-		if (index === 0) uniqueCafes.push(cafe)
-
-		uniqueCafes.forEach(uCafe => {
-			if (uCafe.formatted_address !== cafe.formatted_address) {
-				uniqueCafes.push(cafe)
-			}
-		})
-
-		return uniqueCafes
-	}, [])
-}
 
 app.post('/api/v1/stations/:station_id/cafes', (request, response) => {
 	const cafe = request.body;
