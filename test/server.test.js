@@ -6,7 +6,7 @@ const expect = chai.expect;
 const app = require('../server');
 const config = require('../knexfile')['test'];
 const database = require('knex')(config);
-const { testMockStations, testMockCafes, testMockErrorStations, testMockEditStations, testMockErrorCafes, testMockEditCafes } = require('./testMocks');
+const { testStation1, testMockStations, testMockCafes, testMockErrorStations, testMockEditStations, testMockErrorCafes, testMockEditCafes } = require('./testMocks');
 const { seedStations, seedCafes } = require('../utils/seedMocks')
 
 chai.use(chaiHttp)
@@ -34,10 +34,13 @@ describe('Server file', () => {
           const result = response.body.length
           const expected = testMockStations.length
           //add a check for if response.body includes info that we expect (seedStations - the timestamps)
+          const firstEntry = response.body[0]
+          const expectedEntry = testStation1[0]
 
           expect(error).to.be.null;
           expect(response).to.have.status(200);
           expect(result).to.equal(expected);
+          expect(firstEntry).to.deep.include(expectedEntry)
           done();
         })
     })

@@ -1,3 +1,19 @@
+const testStation1 = [
+  {
+    station_name: 'Station 1',
+    station_phone: '303-330-0000',
+    latitude: 12.23,
+    longitude: 13.45,
+    city: 'Denver',
+    state: 'CO',
+    street_address: '123 Main St.',
+    zip_code: '80202',
+    intersection_directions: 'Main and Sherman',
+    access_days_time: '24/7/365'
+  }
+]
+
+
 const testMockStations = [
   {
     station_name: 'Test Station 1',
@@ -192,4 +208,4 @@ const testMockEditCafes = [
   }
 ]
 
-module.exports = { testMockCafes, testMockStations, testMockErrorStations, testMockEditStations, testMockErrorCafes, testMockEditCafes  }
+module.exports = { testStation1, testMockCafes, testMockStations, testMockErrorStations, testMockEditStations, testMockErrorCafes, testMockEditCafes  }
