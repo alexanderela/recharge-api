@@ -1,9 +1,22 @@
-const testStation1 = [
+const testStations = [
   {
     station_name: 'Station 1',
     station_phone: '303-330-0000',
-    latitude: 12.23,
-    longitude: 13.45,
+    latitude: '12.23',
+    longitude: '13.45',
+    city: 'Denver',
+    state: 'CO',
+    street_address: '123 Main St.',
+    zip_code: '80202',
+    intersection_directions: 'Main and Sherman',
+    access_days_time: '24/7/365'
+  },
+  {
+    id: 1,
+    station_name: 'Station 1',
+    station_phone: '303-330-0000',
+    latitude: '12.23',
+    longitude: '13.45',
     city: 'Denver',
     state: 'CO',
     street_address: '123 Main St.',
@@ -89,6 +102,32 @@ const testMockEditStations = [
     zip_code: '80202',
     intersection_directions: 'Main and Grant',
     access_days_time: '9a-5p'
+  }
+]
+
+const testCafes = [
+  {
+    station_id: 2,
+    cafe_name: 'Cafe 4',
+    street_address: '109 Front St.',
+    city: 'Denver',
+    state: 'CO',
+    zip_code: '80202',
+    cross_street: 'Florida Ave',
+    formatted_address: '109 Front St. Denver, CO 80202',
+    distance_in_meters: 333
+  },
+  {
+    id: 1,
+    station_id: 1,
+    cafe_name: 'Cafe 1',
+    street_address: '098 Front St.',
+    city: 'Denver',
+    state: 'CO',
+    zip_code: '80202',
+    cross_street: 'Grant Ave',
+    formatted_address: '098 Front St. Denver, CO 80202',
+    distance_in_meters: 333
   }
 ]
 
@@ -208,4 +247,4 @@ const testMockEditCafes = [
   }
 ]
 
-module.exports = { testStation1, testMockCafes, testMockStations, testMockErrorStations, testMockEditStations, testMockErrorCafes, testMockEditCafes  }
+module.exports = { testStations, testCafes, testMockCafes, testMockStations, testMockErrorStations, testMockEditStations, testMockErrorCafes, testMockEditCafes  }

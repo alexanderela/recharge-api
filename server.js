@@ -4,7 +4,7 @@ const environment = process.env.NODE_ENV || 'development';
 const config = require('./knexfile')[environment];
 const database = require('knex')(config);
 const app = express();
-const cafeCleanUp = require('./utils/dataCleaner');
+const cafeCleanUp = require('./utils/dbDataCleaner');
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));

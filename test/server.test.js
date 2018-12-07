@@ -6,8 +6,7 @@ const expect = chai.expect;
 const app = require('../server');
 const config = require('../knexfile')['test'];
 const database = require('knex')(config);
-const { testStation1, testMockStations, testMockCafes, testMockErrorStations, testMockEditStations, testMockErrorCafes, testMockEditCafes } = require('./testMocks');
-const { seedStations, seedCafes } = require('../utils/seedMocks')
+const { testStations, testCafes, testMockStations, testMockCafes, testMockErrorStations, testMockEditStations, testMockErrorCafes, testMockEditCafes } = require('./testMocks');
 
 chai.use(chaiHttp)
 
@@ -31,16 +30,12 @@ describe('Server file', () => {
       chai.request(app)
         .get('/api/v1/stations')
         .end((error, response) => {
-          const result = response.body.length
-          const expected = testMockStations.length
-          //add a check for if response.body includes info that we expect (seedStations - the timestamps)
           const firstEntry = response.body[0]
-          const expectedEntry = testStation1[0]
+          const expectedEntry = testStations[0]
 
           expect(error).to.be.null;
           expect(response).to.have.status(200);
-          expect(result).to.equal(expected);
-          expect(firstEntry).to.deep.include(expectedEntry)
+          expect(firstEntry).to.deep.include(expectedEntry);
           done();
         })
     })
@@ -109,12 +104,13 @@ describe('Server file', () => {
       chai.request(app)
         .get('/api/v1/stations/1')
         .end((error, response) => {
-          const result = response.body.length
-          //add a check for if response.body includes info that we expect (seedStations - the timestamps)
+          const resultEntry = response.body[0]
+          const expected = testStations[1]
 
           expect(error).to.be.null;
           expect(response).to.have.status(200);
-          expect(result).to.equal(1);
+          expect(response.body.length).to.equal(1);
+          expect(resultEntry).to.deep.include(expected);
           done();
         })
     })
@@ -198,12 +194,12 @@ describe('Server file', () => {
       chai.request(app)
         .get('/api/v1/stations/2/cafes')
         .end((error, response) => {
-          const result = response.body.length
-          const expected = 3
+          const firstEntry = response.body[0]
+          const expectedEntry = testCafes[0]
 
           expect(error).to.be.null;
           expect(response).to.have.status(200);
-          expect(result).to.equal(expected);
+          expect(firstEntry).to.deep.include(expectedEntry);
           done();
       })
     })
@@ -258,12 +254,12 @@ describe('Server file', () => {
       chai.request(app)
         .get('/api/v1/stations/1/cafes/1')
         .end((error, response) => {
-          const result = response.body.length
-          const expected = 1
+          const firstEntry = response.body[0]
+          const expectedEntry = testCafes[1]
 
           expect(error).to.be.null;
           expect(response).to.have.status(200);
-          expect(result).to.equal(expected);
+          expect(firstEntry).to.deep.include(expectedEntry)
           done();
       })
     })

@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 const { stationKey, cafeId, cafeSecret } = require('../APIKeys/APIKeys.js')
-const { formatStationData, formatCafeData } = require('./dataCleaner')
+const { formatStationData, formatCafeData } = require('./fetchDataCleaner')
 
 const fetchData = async (url) => {
 	const response = await fetch(url);
