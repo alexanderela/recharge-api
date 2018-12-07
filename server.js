@@ -117,9 +117,14 @@ app.get('/api/v1/cafes', (request, response) => {
 	database('cafes').where('cafe_name', cafe_name).select()
 		.then(cafes => {
 			const uniqueCafes = cafeCleanUp(cafes)
-			console.log(uniqueCafes)
-
-			response.status(200).json(uniqueCafes)
+			if (!uniqueCafes.length) {
+				response.status(422).json({
+					uniqueCafes,
+					message: "Incorrect query string. Proper format is '/api/v1/cafes?cafe_name=CAFE+NAME+HERE' or CAFE%20NAME%20COFFEE"
+				})
+			} else {
+				response.status(200).json(uniqueCafes)
+			}
 		})
 		.catch(error => response.status(500).json({
 			error: error.message
