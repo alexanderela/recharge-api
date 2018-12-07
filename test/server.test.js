@@ -236,6 +236,50 @@ describe('Server file', () => {
     })
   })
 
+  describe('/api/v1/cafes', done => {
+    beforeEach(done => {
+      database.migrate.rollback()
+      .then(() => database.migrate.latest())
+      .then(() => database.seed.run())
+      .then(() => done())
+    })
+
+    after(done => {
+      database.migrate.rollback()
+        .then(() => console.log('Testing complete. Db rolled back.'))
+        .then(() => done())
+    })
+
+    it('GET sends back a 200 status code and correct response object', done => {
+      chai.request(app)
+        .get('/api/v1/cafes?cafe_name=Cafe+1')
+        .end((error, response) => {
+          const firstEntry = response.body[0]
+          const expectedEntry = testCafes[1]
+
+          expect(error).to.be.null;
+          expect(response).to.have.status(200);
+          expect(firstEntry).to.deep.include(expectedEntry)
+          done()
+        })
+    })
+
+    it('GET sends back a custom 404 when cafe name is not found', done => {
+      const errorText = 'Cafe with name of Cafe 4 was not found.'
+      chai.request(app)
+        .get('/api/v1/cafes?cafe_name=Cole+Alex+Cafe')
+        .end((error, response) => {
+          const expected = []
+          const expectedMessage = "Incorrect query string. Proper format is '/api/v1/cafes?cafe_name=CAFE+NAME+HERE' or CAFE%20NAME%20COFFEE"
+
+          expect(response.body.uniqueCafes).to.deep.equal(expected)
+          expect(response.body.message).to.deep.equal(expectedMessage)
+          expect(response).to.have.status(422);
+          done();
+        })      
+    })
+  })
+
   describe('/api/v1/stations/:station_id/cafes/:cafe_id', () => {
     beforeEach(done => {
       database.migrate.rollback()
@@ -279,7 +323,7 @@ describe('Server file', () => {
         })
     })
 
-    it('PUT sends back custom 404 when id not found', done => {
+    it('PUT sends back a custom 404 when id not found', done => {
       const errorText = 'Cafe with id of 13 was not found.'
       const editedStation = testMockEditCafes[0]
 
