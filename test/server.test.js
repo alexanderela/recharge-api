@@ -321,7 +321,7 @@ describe('Server file', () => {
       })
     })
 
-    it.skip('PUT sends back a 202 status code and correct response object', done => {
+    it('PUT sends back a 202 status code and correct response object', done => {
       const successMessage = 'Edit successful. Cafe with id of 1 name changed from Cafe 1 to Test Cafe 1.'
       const editedCafe = testMockCafes[0]
 
@@ -351,7 +351,7 @@ describe('Server file', () => {
         })
     })
 
-    it.skip('PUT sends back 422 when no name provided not found', done => {
+    it('PUT sends back 422 when no name provided not found', done => {
       const errorText = 'No cafe name provided.'
       const editedCafe = testMockEditCafes[1]
 
