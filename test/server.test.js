@@ -203,7 +203,7 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it('GET sends back a 200 status code and correct response object', done => {
+    it.skip('GET sends back a 200 status code and correct response object', done => {
       chai.request(app)
         .get('/api/v1/stations/2/cafes')
         .end((error, response) => {
@@ -263,7 +263,7 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it('GET sends back a 200 status code and correct response object', done => {
+    it.skip('GET sends back a 200 status code and correct response object', done => {
       chai.request(app)
         .get('/api/v1/cafes?cafe_name=Cafe+1')
         .end((error, response) => {
@@ -307,7 +307,7 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it('GET sends back a 200 status code and correct response object', done => {
+    it.skip('GET sends back a 200 status code and correct response object', done => {
       chai.request(app)
         .get('/api/v1/stations/1/cafes/1')
         .end((error, response) => {
