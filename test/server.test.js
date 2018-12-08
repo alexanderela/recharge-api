@@ -128,7 +128,7 @@ describe('Server file', () => {
         })
     })
 
-    it.skip('PUT sends back a 202 status code and correct response object', done => {
+    it('PUT sends back a 202 status code and correct response object', done => {
       const successMessage = 'Edit successful. Station with id of 1 name changed from Station 1 to Edit Test Station 1.'
       const editedStation = testMockEditStations[0]
 
