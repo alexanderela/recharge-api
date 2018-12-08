@@ -26,7 +26,6 @@ const testStations = [
   }
 ]
 
-
 const testMockStations = [
   {
     station_name: 'Test Station 1',

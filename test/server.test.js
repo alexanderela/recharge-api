@@ -11,6 +11,19 @@ const { testStations, testCafes, testMockStations, testMockCafes, testMockErrorS
 chai.use(chaiHttp)
 
 describe('Server file', () => {
+  before(done => {
+    database.migrate.rollback()
+      .then(() => database.migrate.latest())
+      .then(() => database.seed.run())
+      .then(() => done())
+  })
+
+  after(done => {
+    database.migrate.rollback()
+      .then(() => console.log('Testing complete. Db rolled back.'))
+      .then(() => done())
+  })
+
   describe('/api/v1/stations', () => {
     beforeEach(done => {
       database.migrate.rollback()
@@ -25,7 +38,7 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it('GET sends back a 200 status code and correct response object', done => {
+    it.skip('GET sends back a 200 status code and correct response object', done => {
 
       chai.request(app)
         .get('/api/v1/stations')
@@ -99,7 +112,7 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it('GET sends back a 200 status code and correct response object', done => {
+    it.skip('GET sends back a 200 status code and correct response object', done => {
 
       chai.request(app)
         .get('/api/v1/stations/1')
@@ -190,7 +203,7 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it('GET sends back a 200 status code and correct response object', done => {
+    it.skip('GET sends back a 200 status code and correct response object', done => {
       chai.request(app)
         .get('/api/v1/stations/2/cafes')
         .end((error, response) => {
@@ -236,7 +249,7 @@ describe('Server file', () => {
     })
   })
 
-  describe('/api/v1/cafes', done => {
+  describe('/api/v1/cafes?', done => {
     beforeEach(done => {
       database.migrate.rollback()
       .then(() => database.migrate.latest())
@@ -250,7 +263,7 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it('GET sends back a 200 status code and correct response object', done => {
+    it.skip('GET sends back a 200 status code and correct response object', done => {
       chai.request(app)
         .get('/api/v1/cafes?cafe_name=Cafe+1')
         .end((error, response) => {
@@ -264,8 +277,7 @@ describe('Server file', () => {
         })
     })
 
-    it('GET sends back a custom 404 when cafe name is not found', done => {
-      const errorText = 'Cafe with name of Cafe 4 was not found.'
+    it('GET sends back a custom 422 when cafe query is formatted incorrectly', done => {
       chai.request(app)
         .get('/api/v1/cafes?cafe_name=Cole+Alex+Cafe')
         .end((error, response) => {
@@ -276,7 +288,7 @@ describe('Server file', () => {
           expect(response.body.message).to.deep.equal(expectedMessage)
           expect(response).to.have.status(422);
           done();
-        })      
+        })
     })
   })
 
@@ -294,7 +306,7 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it('GET sends back a 200 status code and correct response object', done => {
+    it.skip('GET sends back a 200 status code and correct response object', done => {
       chai.request(app)
         .get('/api/v1/stations/1/cafes/1')
         .end((error, response) => {
