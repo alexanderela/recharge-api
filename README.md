@@ -26,7 +26,7 @@ See [API Endpoints](#api-endpoints) below for endpoint details.
 
 * `knex seed:run`
 
-### [API Endpoints](#api-endpoints)
+### API Endpoints
 #### Charging Stations
 ```
 GET /api/v1/stations
