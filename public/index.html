@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recharge API Documentation</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <body>
+    <h1 class="main-headline">Welcome to Recharge API Documentation!</h1>
+
+    <article class="charging-station-article">
+      <h2 class="charging-station-title">Charging Station Endpoints</h2>
+      <section class="charging-station-endpoints">
+        <h3 class="endpoint-title">Get Endpoints</h3>
+        <p class="instructions">
+          To get all charging stations data, use the URL:
+        </p>
+        <p class="url">'/api/v1/stations'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with an array of
+          all station objects.
+        </p>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+          [
+            {
+              "id": 1,
+              "station_name": "Hyatt Regency - Denver",
+              "station_phone": "303-486-4467",
+              "latitude": "39.74",
+              "longitude": "-104.99",
+              "street_address": "650 15th St",
+              "city": "Denver",
+              "state": "CO",
+              "zip_code": "80202",
+              "created_at": "2018-12-11T01:10:17.799Z",
+              "updated_at": "2018-12-11T01:10:17.799Z",
+              "intersection_directions": "At Colorado Convention Center, level 2",
+              "access_days_time": "24 hours daily; pay lot"
+            },
+            {
+              "id": 2,
+              "station_name": "City of Denver - Colorado Convention Center Garage",
+              "station_phone": "303-228-8071",
+              "latitude": "39.74",
+              "longitude": "-105.00",
+              "street_address": "1104 Champa St",
+              "city": "Denver",
+              "state": "CO",
+              "zip_code": "80202",
+              "created_at": "2018-12-11T01:10:17.807Z",
+              "updated_at": "2018-12-11T01:10:17.807Z",
+              "intersection_directions": "Parking space 1081. Level P-1, half way down the level near the freight elevator",
+              "access_days_time": "24 hours daily"
+          },
+          ...   
+          ]  
+        </code></pre>
+
+        <p class="instructions">
+          To get charging station data for a specific station, use the URL:
+        </p>
+        <p class="url">'/api/v1/stations/STATIONIDHERE'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body containing an
+          array which contains the specified station object.
+        </p>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+          [
+            {
+              "id": 4,
+              "station_name": "UNICO",
+              "station_phone": "888-758-4389",
+              "latitude": "39.75",
+              "longitude": "-105.00",
+              "street_address": "1501-1599 Lawrence St",
+              "city": "Denver",
+              "state": "CO",
+              "zip_code": "80202",
+              "created_at": "2018-12-11T01:10:17.812Z",
+              "updated_at": "2018-12-11T01:10:17.812Z",
+              "intersection_directions": "WRITER SQUARE 1; Parking level P1 near elevators and cashier",
+              "access_days_time": "24 hours daily"
+            }
+          ]
+          </code></pre>
+
+        <h3>Post Endpoints</h3>
+        <p class="instructions">
+          To add a charging station to the database, use the URL:
+        </p>
+        <p class="url">'/api/v1/stations/'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with an id and a
+          message.
+        </p>
+        <h4 class="example">Example Request:</h4>
+        <pre><code>
+            {
+              "station_name": "Chris' Awesome Station",
+              "station_phone": "555-555-5555",
+              "street_address": "123 17th",
+              "city": "Denver",
+              "state": "CO",
+              "zip_code": 80220,
+              "latitude": 39.75,
+              "longitude": -105,
+              "intersection_directions": "unknown",
+              "access_days_time": "24 hours daily"
+            }
+            </code></pre>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+            {
+              "id": 35,
+              "message": "Station \"Chris' awesome station\" successfully created!"
+            }
+              </code></pre>
+
+        <h3>Put Endpoints</h3>
+        <p class="instructions">
+          To change the name of a specific charging station, use the URL:
+        </p>
+        <p class="url">'/api/v1/stations/STATIONIDHERE'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with a message.
+        </p>
+        <h4 class="example">Example Request:</h4>
+        <pre><code>
+            {
+              "station_name": "Freddie's awesome station"
+            } 
+          </code></pre>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+            {
+              "message": "Edit successful. Station with id of 35 name changed from Chris' awesome station to Freddie's awesome station."
+            } 
+          </code></pre>
+
+        <h3>Delete Endpoints</h3>
+        <p class="instructions">
+          To delete a specific charging station, use the URL:
+        </p>
+        <p class="url">'/api/v1/stations/STATIONIDHERE'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with a message
+          and the id of '1' if the delete is successful.
+        </p>
+        <h4 class="example">Example URL:</h4>
+        <pre><code>
+            http://localhost:3000/api/v1/stations/33
+          </code></pre>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+            {
+              "id": 1,
+              "message": "Station 33 has been deleted."
+            }
+          </code></pre>
+      </section>
+    </article>
+    <article class="cafe-article">
+      <h2 class="cafe-title">Cafe Endpoints</h2>
+      <section class="cafe-endpoints">
+        <h3>Get Endpoints</h3>
+        <p></p>
+        <h3>Post Endpoints</h3>
+        <p></p>
+        <h3>Put Endpoints</h3>
+        <p></p>
+        <h3>Delete Endpoints</h3>
+        <p></p>
+      </section>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+* {
+}
+
+.main-headline {
+  text-align: center;
+}
+
+.charging-station-article,
+.cafe-article {
+  border: 2px solid black;
+  margin: 20px;
+  padding: 10px;
+}
+
+.charging-station-title,
+.cafe-title {
+  text-align: center;
+}
