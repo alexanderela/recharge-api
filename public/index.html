@@ -14,7 +14,7 @@
         <p class="instructions">
           To get all charging stations data, use the URL:
         </p>
-        <p class="url">'/api/v1/stations'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations</p>
         <p class="instructions">
           in your fetch request, which returns a response body with an array of
           all station objects.
@@ -59,14 +59,14 @@
         <p class="instructions">
           To get charging station data for a specific station, use the URL:
         </p>
-        <p class="url">'/api/v1/stations/STATIONIDHERE'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations/STATIONIDHERE</p>
         <p class="instructions">
           in your fetch request, which returns a response body containing an
           array which contains the specified station object.
         </p>
         <h4 class="example">Example URL:</h4>
         <pre><code>
-            /api/v1/stations/1
+            https://recharge-api.herokuapp.com/api/v1/stations/1
               </code></pre>
         <h4 class="example">Example Response:</h4>
         <pre><code>
@@ -89,11 +89,11 @@
           ]
           </code></pre>
 
-        <h3>Post Endpoints</h3>
+        <h3 class="endpoint-title">Post Endpoints</h3>
         <p class="instructions">
           To add a charging station to the database, use the URL:
         </p>
-        <p class="url">'/api/v1/stations/'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations/</p>
         <p class="instructions">
           in your fetch request, which returns a response body with an id and a
           message.
@@ -121,11 +121,11 @@
             }
               </code></pre>
 
-        <h3>Put Endpoints</h3>
+        <h3 class="endpoint-title">Put Endpoints</h3>
         <p class="instructions">
           To change the name of a specific charging station, use the URL:
         </p>
-        <p class="url">'/api/v1/stations/STATIONIDHERE'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations/STATIONIDHERE</p>
         <p class="instructions">
           in your fetch request, which returns a response body with a message.
         </p>
@@ -142,19 +142,17 @@
             } 
           </code></pre>
 
-        <h3>Delete Endpoints</h3>
+        <h3 class="endpoint-title">Delete Endpoints</h3>
         <p class="instructions">
           To delete a specific charging station, use the URL:
         </p>
-        <p class="url">'/api/v1/stations/STATIONIDHERE'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations/STATIONIDHERE</p>
         <p class="instructions">
           in your fetch request, which returns a response body with a message
           and the id of '1' if the delete is successful.
         </p>
         <h4 class="example">Example URL:</h4>
-        <pre><code>
-            http://localhost:3000/api/v1/stations/33
-          </code></pre>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations/33</p>
         <h4 class="example">Example Response:</h4>
         <pre><code>
             {
@@ -170,14 +168,14 @@
       <section class="cafe-endpoints">
         <h3 class="endpoint-title">Get Endpoints</h3>
         <p class="instructions">To get a specific cafe by name, use the URL:</p>
-        <p class="url">'/api/v1/cafes?cafe_name=CAFE+NAME+HERE'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/cafes?cafe_name=CAFE+NAME+HERE</p>
         <p class="instructions">
           in your fetch request, which returns a response body with an array of
           matching cafe objects.
         </p>
         <h4 class="example">Example URL:</h4>
         <pre><code>
-            /api/v1/cafes?cafe_name=Perks+Coffee
+            https://recharge-api.herokuapp.com/api/v1/cafes?cafe_name=Perks+Coffee
             </code></pre>
         <h4 class="example">Example Response:</h4>
         <pre><code>
@@ -202,14 +200,14 @@
         <p class="instructions">
           To get charging station data for a specific station, use the URL:
         </p>
-        <p class="url">'/api/v1/stations/STATIONIDHERE/cafes'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations/STATIONIDHERE/cafes</p>
         <p class="instructions">
           in your fetch request, which returns a response body with an array of
           all cafe objects matching provided station id.
         </p>
         <h4 class="example">Example URL:</h4>
         <pre><code>
-            /api/v1/stations/1/cafes
+            https://recharge-api.herokuapp.com/api/v1/stations/1/cafes
             </code></pre>
         <h4 class="example">Example Response:</h4>
         <pre><code>
@@ -260,14 +258,14 @@
           </code></pre>
 
         <p class="instructions">To get a specific cafe by id, use the URL:</p>
-        <p class="url">'/api/v1/stations/STATIONIDHERE/cafes/CAFEIDHERE'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations/STATIONIDHERE/cafes/CAFEIDHERE</p>
         <p class="instructions">
           in your fetch request, which returns a response body with an array of
           one cafe object of matching station.
         </p>
         <h4 class="example">Example URL:</h4>
         <pre><code>
-            /api/v1/stations/1/cafes/2
+            https://recharge-api.herokuapp.com/api/v1/stations/1/cafes/2
               </code></pre>
         <h4 class="example">Example Response:</h4>
         <pre><code>
@@ -289,17 +287,17 @@
             ]
             </code></pre>
 
-        <h3>Post Endpoints</h3>
+        <h3 class="endpoint-title">Post Endpoints</h3>
         <p class="instructions">
           To add a charging station to the database, use the URL:
         </p>
-        <p class="url">'/api/v1/stations/STATIONIDHERE/cafes'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations/STATIONIDHERE/cafes</p>
         <p class="instructions">
           in your fetch request, which returns a response body with an id and a
           message.
         </p>
         <pre><code>
-            /api/v1/stations/1/cafes
+            https://recharge-api.herokuapp.com/api/v1/stations/1/cafes
               </code></pre>
         <h4 class="example">Example Request:</h4>
         <pre><code>
@@ -323,11 +321,11 @@
             }
                 </code></pre>
 
-        <h3>Put Endpoints</h3>
+        <h3 class="endpoint-title">Put Endpoints</h3>
         <p class="instructions">
           To change the name of a specific cafe, use the URL:
         </p>
-        <p class="url">'/api/v1/stations/STATIONIDHERE/cafes/CAFEIDHERE'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/stations/STATIONIDHERE/cafes/CAFEIDHERE</p>
         <p class="instructions">
           in your fetch request, which returns a response body with an id and a
           message.
@@ -346,16 +344,16 @@
             } 
             </code></pre>
 
-        <h3>Delete Endpoints</h3>
+        <h3 class="endpoint-title">Delete Endpoints</h3>
         <p class="instructions">To delete a specific cafe, use the URL:</p>
-        <p class="url">'/api/v1/cafes/CAFEIDHERE'</p>
+        <p class="url">https://recharge-api.herokuapp.com/api/v1/cafes/CAFEIDHERE</p>
         <p class="instructions">
           in your fetch request, which returns a response body with an id and a
           message.
         </p>
         <h4 class="example">Example URL:</h4>
         <pre><code>
-            http://localhost:3000/api/v1/cafes/2
+            http://localhost:3000https://recharge-api.herokuapp.com/api/v1/cafes/2
             </code></pre>
         <h4 class="example">Example Response:</h4>
         <pre><code>
