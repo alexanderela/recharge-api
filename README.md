@@ -130,7 +130,7 @@ GET /api/v1/stations
 GET /api/v1/stations/:station_id
 --> returns a response body with an array of one station object
 
-POST/api/v1/stations/:station_id
+POST/api/v1/stations
 --> returns a response body with an id and a message
 
 PUT/api/v1/stations/:station_id
@@ -151,7 +151,7 @@ GET /api/v1/stations/:station_id/cafes
 GET /api/v1/stations/:station_id/cafes/:cafe_id
 --> returns a response body with an array of one cafe object of matching station
 
-POST /api/v1/stations/:station_id/cafes/:cafe_id
+POST /api/v1/stations/:station_id/cafes
 --> returns a response body with an id and a message
 
 PUT /api/v1/stations/:station_id/cafes/:cafe_id
