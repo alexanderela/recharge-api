@@ -7,7 +7,6 @@
   </head>
   <body>
     <h1 class="main-headline">Welcome to Recharge API Documentation!</h1>
-
     <article class="charging-station-article">
       <h2 class="charging-station-title">Charging Station Endpoints</h2>
       <section class="charging-station-endpoints">
@@ -65,6 +64,10 @@
           in your fetch request, which returns a response body containing an
           array which contains the specified station object.
         </p>
+        <h4 class="example">Example URL:</h4>
+        <pre><code>
+            /api/v1/stations/1
+              </code></pre>
         <h4 class="example">Example Response:</h4>
         <pre><code>
           [
@@ -161,17 +164,206 @@
           </code></pre>
       </section>
     </article>
+
     <article class="cafe-article">
       <h2 class="cafe-title">Cafe Endpoints</h2>
       <section class="cafe-endpoints">
-        <h3>Get Endpoints</h3>
-        <p></p>
+        <h3 class="endpoint-title">Get Endpoints</h3>
+        <p class="instructions">To get a specific cafe by name, use the URL:</p>
+        <p class="url">'/api/v1/cafes?cafe_name=CAFE+NAME+HERE'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with an array of
+          matching cafe objects.
+        </p>
+        <h4 class="example">Example URL:</h4>
+        <pre><code>
+            /api/v1/cafes?cafe_name=Perks+Coffee
+            </code></pre>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+          [
+            {
+              "id": 1,
+              "cafe_name": "Perks Coffee",
+              "street_address": "650 15th St",
+              "city": "Denver",
+              "state": "CO",
+              "zip_code": null,
+              "cross_street": null,
+              "formatted_address": "650 15th St, Denver, CO, United States",
+              "distance_in_meters": 32,
+              "station_id": 1,
+              "created_at": "2018-12-11T01:10:17.833Z",
+              "updated_at": "2018-12-11T01:10:17.833Z"
+            }
+          ]
+          </code></pre>
+
+        <p class="instructions">
+          To get charging station data for a specific station, use the URL:
+        </p>
+        <p class="url">'/api/v1/stations/STATIONIDHERE/cafes'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with an array of
+          all cafe objects matching provided station id.
+        </p>
+        <h4 class="example">Example URL:</h4>
+        <pre><code>
+            /api/v1/stations/1/cafes
+            </code></pre>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+          [
+            {
+              "id": 1,
+              "cafe_name": "Perks Coffee",
+              "street_address": "650 15th St",
+              "city": "Denver",
+              "state": "CO",
+              "zip_code": null,
+              "cross_street": null,
+              "formatted_address": "650 15th St, Denver, CO, United States",
+              "distance_in_meters": 32,
+              "station_id": 1,
+              "created_at": "2018-12-11T01:10:17.833Z",
+              "updated_at": "2018-12-11T01:10:17.833Z"
+            },
+            {
+              "id": 2,
+              "cafe_name": "Peet's Coffee & Tea",
+              "street_address": "1550 Court Pl",
+              "city": "Denver",
+              "state": "CO",
+              "zip_code": "80202",
+              "cross_street": "Sheraton Denver Downtown",
+              "formatted_address": "1550 Court Pl (Sheraton Denver Downtown), Denver, CO 80202, United States",
+              "distance_in_meters": 368,
+              "station_id": 1,
+              "created_at": "2018-12-11T01:10:17.835Z",
+              "updated_at": "2018-12-11T01:10:17.835Z"
+            },
+            {
+              "id": 3,
+              "cafe_name": "Ink! Coffee",
+              "street_address": "618 16th St",
+              "city": "Denver",
+              "state": "CO",
+              "zip_code": "80202",
+              "cross_street": "btwn California & Welton",
+              "formatted_address": "618 16th St (btwn California & Welton), Denver, CO 80202, United States",
+              "distance_in_meters": 167,
+              "station_id": 1,
+              "created_at": "2018-12-11T01:10:17.834Z",
+              "updated_at": "2018-12-11T01:10:17.834Z"
+            }
+          ]
+          </code></pre>
+
+        <p class="instructions">To get a specific cafe by id, use the URL:</p>
+        <p class="url">'/api/v1/stations/STATIONIDHERE/cafes/CAFEIDHERE'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with an array of
+          one cafe object of matching station.
+        </p>
+        <h4 class="example">Example URL:</h4>
+        <pre><code>
+            /api/v1/stations/1/cafes/2
+              </code></pre>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+            [
+              {
+                "id": 2,
+                "cafe_name": "Peet's Coffee & Tea",
+                "street_address": "1550 Court Pl",
+                "city": "Denver",
+                "state": "CO",
+                "zip_code": "80202",
+                "cross_street": "Sheraton Denver Downtown",
+                "formatted_address": "1550 Court Pl (Sheraton Denver Downtown), Denver, CO 80202, United States",
+                "distance_in_meters": 368,
+                "station_id": 1,
+                "created_at": "2018-12-11T01:10:17.835Z",
+                "updated_at": "2018-12-11T01:10:17.835Z"
+              }
+            ]
+            </code></pre>
+
         <h3>Post Endpoints</h3>
-        <p></p>
+        <p class="instructions">
+          To add a charging station to the database, use the URL:
+        </p>
+        <p class="url">'/api/v1/stations/STATIONIDHERE/cafes'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with an id and a
+          message.
+        </p>
+        <pre><code>
+            /api/v1/stations/1/cafes
+              </code></pre>
+        <h4 class="example">Example Request:</h4>
+        <pre><code>
+            {
+              "station_id": 1,
+              "cafe_name": "Chris' awesome cafe",
+              "street_address": "123 17th",
+              "city": "Denver",
+              "state": "CO",
+              "zip_code": 80220,
+              "formatted_address":  "123 17th, Denver CO 80220",
+              "cross_street": "17th and Market",
+              "distance_in_meters": 22
+            }
+              </code></pre>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+            {
+              "id": 103,
+              "message": "Cafe "Chris' awesome cafe" successfully created!"
+            }
+                </code></pre>
+
         <h3>Put Endpoints</h3>
-        <p></p>
+        <p class="instructions">
+          To change the name of a specific cafe, use the URL:
+        </p>
+        <p class="url">'/api/v1/stations/STATIONIDHERE/cafes/CAFEIDHERE'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with an id and a
+          message.
+        </p>
+        <h4 class="example">Example Request:</h4>
+        <pre><code>
+            {
+              "cafe_name": "Freddie's awesome cafe"
+            }
+            </code></pre>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+            {
+              "cafe": 5,
+              "message": "Edit successful. Cafe with id of 2 name changed from Peet's Coffee & Tea to Freddie's awesome cafe."
+            } 
+            </code></pre>
+
         <h3>Delete Endpoints</h3>
-        <p></p>
+        <p class="instructions">To delete a specific cafe, use the URL:</p>
+        <p class="url">'/api/v1/cafes/CAFEIDHERE'</p>
+        <p class="instructions">
+          in your fetch request, which returns a response body with an id and a
+          message.
+        </p>
+        <h4 class="example">Example URL:</h4>
+        <pre><code>
+            http://localhost:3000/api/v1/cafes/2
+            </code></pre>
+        <h4 class="example">Example Response:</h4>
+        <pre><code>
+              {
+                "id": 1,
+                "message": "Cafe 2 has been deleted."
+              }
+            </code></pre>
       </section>
     </article>
   </body>
