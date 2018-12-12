@@ -19,7 +19,7 @@ const createStations = (knex, station) => {
     access_days_time,
     ev_network
   } = station
-
+ 
   return knex('stations').insert({
     station_name,
     station_phone,
