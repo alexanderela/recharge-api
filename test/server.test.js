@@ -38,17 +38,25 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it.skip('GET sends back a 200 status code and correct response object', done => {
+    it('GET sends back a 200 status code and correct response object', done => {
 
       chai.request(app)
         .get('/api/v1/stations')
         .end((error, response) => {
-          const firstEntry = response.body[0]
-          const expectedEntry = testStations[0]
+          const stationNames = response.body.map(station => station.station_name);
+          const stationAddresses = response.body.map(station => station.street_address);
+          const stationName1 = 'Station 1';
+          const stationName2 = 'Station 2';
+          const stationAddress1 = '123 Main St.';
+          const stationAddress2 = '456 Main St.';
+
 
           expect(error).to.be.null;
           expect(response).to.have.status(200);
-          expect(firstEntry).to.deep.include(expectedEntry);
+          expect(stationNames.includes(stationName1)).to.equal(true);
+          expect(stationNames.includes(stationName2)).to.equal(true);
+          expect(stationAddresses.includes(stationAddress1)).to.equal(true);
+          expect(stationAddresses.includes(stationAddress2)).to.equal(true);
           done();
         })
     })
