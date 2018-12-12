@@ -126,14 +126,14 @@ describe('Server file', () => {
         .get('/api/v1/stations/1')
         .end((error, response) => {
 
-          const stationIDs = response.body.map(station => station.id);
+          const stationIds = response.body.map(station => station.id);
           const expected = 1;
 
           expect(error).to.be.null;
           expect(response).to.have.status(200);
           expect(response.body.length).to.equal(1);
-          expect(stationIDs.includes(expected)).to.equal(true);
-          expect(stationIDs.includes(0)).to.equal(false);
+          expect(stationIds.includes(expected)).to.equal(true);
+          expect(stationIds.includes(0)).to.equal(false);
           done();
         })
     })
