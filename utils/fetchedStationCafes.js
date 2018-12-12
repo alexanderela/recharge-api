@@ -1,7 +1,7 @@
-// const { fetchStations } = require('./apiHelper')
+const { fetchStations } = require('./apiHelper')
 
-// const fetchedStationCafes = async () => await fetchStations(80202)
-// console.log(fetchedStationCafes)
+const fetchedStationCafes = async () => await fetchStations(80202)
+console.log(fetchedStationCafes)
 
 const fetchedStationCafes = [
   {
