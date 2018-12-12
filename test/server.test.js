@@ -271,7 +271,7 @@ describe('Server file', () => {
         .then(() => done())
     })
 
-    it.skip('GET sends back a 200 status code and correct response object', done => {
+    it('GET sends back a 200 status code and correct response object', done => {
       chai.request(app)
         .get('/api/v1/cafes?cafe_name=Cafe+1')
         .end((error, response) => {
@@ -280,7 +280,8 @@ describe('Server file', () => {
 
           expect(error).to.be.null;
           expect(response).to.have.status(200);
-          expect(firstEntry).to.deep.include(expectedEntry)
+          expect(firstEntry.cafe_name).to.equal(expectedEntry.cafe_name)
+          expect(firstEntry.cross_street).to.equal(expectedEntry.cross_street)
           done()
         })
     })
