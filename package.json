@@ -14,7 +14,9 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "knex": "^0.15.2",
-    "pg": "^7.7.1"
+    "nodemon": "^1.18.8",
+    "pg": "^7.7.1",
+    "postgresql": "0.0.1"
   },
   "devDependencies": {
     "node-fetch": "^2.3.0",

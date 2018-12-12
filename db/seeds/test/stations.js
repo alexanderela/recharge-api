@@ -1,6 +1,11 @@
 const { mockCafes, mockStations } = require('../../../utils/seedMocks')
 
 const createStations = (knex, station) => {
+  const evConnectorType = 
+    station.ev_connector_type
+    ? station.ev_connector_type.join(', ')
+    : null;
+
   const {
     station_name,
     station_phone,
@@ -11,9 +16,10 @@ const createStations = (knex, station) => {
     state,
     zip_code,
     intersection_directions,
-    access_days_time
+    access_days_time,
+    ev_network
   } = station
-
+ 
   return knex('stations').insert({
     station_name,
     station_phone,
@@ -24,7 +30,9 @@ const createStations = (knex, station) => {
     state,
     zip_code,
     intersection_directions,
-    access_days_time
+    access_days_time,
+    ev_connector_type: evConnectorType,
+    ev_network
   }, 'id')
   .then(stationIds => {
     let cafesPromises = station.cafes.map(cafe => {
