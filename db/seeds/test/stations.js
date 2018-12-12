@@ -11,7 +11,9 @@ const createStations = (knex, station) => {
     state,
     zip_code,
     intersection_directions,
-    access_days_time
+    access_days_time,
+    ev_connector_type,
+    ev_network
   } = station
 
   return knex('stations').insert({
@@ -24,7 +26,9 @@ const createStations = (knex, station) => {
     state,
     zip_code,
     intersection_directions,
-    access_days_time
+    access_days_time,
+    ev_connector_type,
+    ev_network
   }, 'id')
   .then(stationIds => {
     let cafesPromises = station.cafes.map(cafe => {
