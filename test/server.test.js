@@ -319,12 +319,10 @@ describe('Server file', () => {
       chai.request(app)
         .get('/api/v1/stations/1/cafes/1')
         .end((error, response) => {
-          const firstEntry = response.body[0]
-          const expectedEntry = testCafes[1]
 
           expect(error).to.be.null;
           expect(response).to.have.status(200);
-          expect(firstEntry).to.deep.include(expectedEntry)
+          expect(response.body.length).to.equal(1)
           done();
       })
     })
