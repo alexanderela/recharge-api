@@ -138,8 +138,7 @@ describe('Server file', () => {
         })
     })
 
-    it.skip('PUT sends back a 202 status code and correct response object', done => {
-      const successMessage = 'Edit successful. Station with id of 1 name changed from Station 1 to Edit Test Station 1.'
+    it('PUT sends back a 202 status code and correct response object', done => {
       const editedStation = testMockEditStations[0]
 
       chai.request(app)
@@ -148,7 +147,8 @@ describe('Server file', () => {
         .end((error, response) => {
           expect(error).to.be.null;
           expect(response).to.have.status(202);
-          expect(response.body.message).to.equal(successMessage);
+          expect(response.body.message.includes('Edit successful. Station with id of 1 name changed from')).to.equal(true);
+          expect(response.body.message.includes('to Edit Test Station 1.')).to.equal(true);
           done();
         })
     })
