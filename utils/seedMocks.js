@@ -73,7 +73,7 @@ const mockStations = [
     zip_code: '80202',
     intersection_directions: 'Main and Sherman',
     access_days_time: '24/7/365',
-    ev_connector_type: ["J1772"],
+    ev_connector_type: null,
     ev_network: "SemaCharge Network",
     cafes: [mockCafes[0], mockCafes[1], mockCafes[2]]
   },

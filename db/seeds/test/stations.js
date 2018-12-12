@@ -1,6 +1,11 @@
 const { mockCafes, mockStations } = require('../../../utils/seedMocks')
 
 const createStations = (knex, station) => {
+  const evConnectorType = 
+    station.ev_connector_type
+    ? station.ev_connector_type.join(', ')
+    : null;
+
   const {
     station_name,
     station_phone,
@@ -12,7 +17,6 @@ const createStations = (knex, station) => {
     zip_code,
     intersection_directions,
     access_days_time,
-    ev_connector_type,
     ev_network
   } = station
 
@@ -27,7 +31,7 @@ const createStations = (knex, station) => {
     zip_code,
     intersection_directions,
     access_days_time,
-    ev_connector_type: ev_connector_type.join(', '),
+    ev_connector_type: evConnectorType,
     ev_network
   }, 'id')
   .then(stationIds => {
