@@ -27,7 +27,7 @@ const createStations = (knex, station) => {
     zip_code,
     intersection_directions,
     access_days_time,
-    ev_connector_type,
+    ev_connector_type: ev_connector_type.join(', '),
     ev_network
   }, 'id')
   .then(stationIds => {
