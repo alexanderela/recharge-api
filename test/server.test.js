@@ -163,7 +163,7 @@ describe('Server file', () => {
         .end((error, response) => {
           expect(error).to.be.null;
           expect(response).to.have.status(404);
-          expect(response.body.error).to.equal(errorText);
+          expect(response.text).to.equal(errorText);
           done();
         })
     })
@@ -178,7 +178,7 @@ describe('Server file', () => {
         .end((error, response) => {
           expect(error).to.be.null;
           expect(response).to.have.status(422);
-          expect(response.body.error).to.equal(errorText);
+          expect(response.text).to.equal(errorText);
           done();
         })
     })

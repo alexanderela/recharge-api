@@ -6,6 +6,29 @@ const database = require('knex')(config);
 const app = express();
 const cafeCleanUp = require('./utils/dbDataCleaner');
 
+const stationLengthChecker = async (request, response, next) => {
+	const newName = request.body.station_name;
+	const { station_id } = request.params
+	const station = await database('stations').where('id', station_id).select()
+	console.log(station_id)
+
+	if (!station.length) {
+		return response.status(404).send(`Station with id of ${station_id} was not found.`);
+	} else {
+		next();
+	}
+}
+
+const stationParamChecker = async (request, response, next) => {
+	const newName = request.body.station_name;
+
+	if(!newName) {
+		return response.status(422).send('No station name provided.');
+	} else {
+		next();
+	}
+}
+
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.set('port', process.env.PORT || 3000);
@@ -62,24 +85,20 @@ app.get('/api/v1/stations/:station_id', (request, response) => {
 		}));
 })
 
-app.put('/api/v1/stations/:station_id', async (request, response) => {
+app.put('/api/v1/stations/:station_id', stationLengthChecker, stationParamChecker, async (request, response) => {
 	const newName = request.body.station_name;
 	const { station_id } = request.params
 	const station = await database('stations').where('id', station_id).select()
-	let oldName;
-
-	if (station.length) {
-		oldName = station[0].station_name
-	}
+	const oldName = station[0].station_name
+	
 
 	database('stations').where('station_name', oldName).update('station_name', newName)
 		.then(() => response.status(202).json({
 			message: `Edit successful. Station with id of ${station_id} name changed from ${oldName} to ${newName}.`
 		}))
-		.catch(error => {
-			if(!station.length) return response.status(404).json({ error: `Station with id of ${station_id} was not found.`});
-			else if (!newName) return response.status(422).json({ error: 'No station name provided.' });
-		})
+		.catch(error => response.status(500).json({
+				error: `Error patching station: ${error.message}`
+		}))
 })
 
 app.delete('/api/v1/stations/:station_id', (request, response) => {
