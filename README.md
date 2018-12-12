@@ -93,8 +93,8 @@ git checkout -b branch-name-here --no-track upstream/master
 ```
 We recommend naming your branch using the following convention:
 ```
-#(stageNumber)-feature-name-your-name
-ex: 4-middleware-cole
+#(issueNumber)-feature-name-your-name
+ex: 36-middleware-error-handling-cole
 ```
 
 #### Contribute using Waffle.io board as a guide
