@@ -59,7 +59,7 @@ const mockCafes = [
     formatted_address: '543 Front St. Denver, CO 80202',
     distance_in_meters: 333
   }
-]
+];
 
 const mockStations = [
   {
@@ -88,10 +88,10 @@ const mockStations = [
     zip_code: '80202',
     intersection_directions: 'Main and Grant',
     access_days_time: '9a-5p',
-    ev_connector_type: ["CHADEMO","J1772COMBO"],
+    ev_connector_type: ["CHADEMO", "J1772COMBO"],
     ev_network: "ChargePoint Network",
     cafes: [mockCafes[3], mockCafes[4], mockCafes[5]]
   }
-]
+];
 
-module.exports = { mockCafes, mockStations }
+module.exports = { mockCafes, mockStations };
