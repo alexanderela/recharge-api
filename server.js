@@ -6,6 +6,52 @@ const database = require('knex')(config);
 const app = express();
 const cafeCleanUp = require('./utils/dbDataCleaner');
 
+const stationLengthChecker = async (request, response, next) => {
+	const { station_id } = request.params
+	const station = await database('stations').where('id', station_id).select()
+	console.log(station_id)
+
+	if (!station.length) {
+		return response.status(404).send(`Station with id of ${station_id} was not found.`);
+	} else {
+		next();
+	}
+}
+
+const stationParamChecker = async (request, response, next) => {
+	const newName = request.body.station_name;
+
+	if(!newName) {
+		return response.status(422).send('No station name provided.');
+	} else {
+		next();
+	}
+}
+
+const cafeLengthChecker = async (request, response, next) => {
+	const { cafe_id, station_id } = request.params
+	const cafe = await database('cafes').where({
+		'id': cafe_id,
+		station_id
+	}).select()
+
+	if(!cafe.length) {
+		return response.status(404).send(`Cafe with id of ${cafe_id} was not found.`);
+	} else {
+		next();
+	}
+}
+
+const cafeParamChecker = async (request, response, next) => {
+	const newName = request.body.cafe_name;
+
+	if(!newName) {
+		return response.status(422).send('No cafe name provided.' );
+	} else {
+		next();
+	}
+}
+
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.set('port', process.env.PORT || 3000);
@@ -62,25 +108,21 @@ app.get('/api/v1/stations/:station_id', (request, response) => {
     }));
 });
 
-app.put('/api/v1/stations/:station_id', async (request, response) => {
-  const newName = request.body.station_name;
-  const { station_id } = request.params;
-  const station = await database('stations').where('id', station_id).select();
-  let oldName;
+app.put('/api/v1/stations/:station_id', stationLengthChecker, stationParamChecker, async (request, response) => {
+	const newName = request.body.station_name;
+	const { station_id } = request.params
+	const station = await database('stations').where('id', station_id).select()
+	const oldName = station[0].station_name
+	
 
-  if (station.length) {
-    oldName = station[0].station_name;
-  }
-
-  database('stations').where('station_name', oldName).update('station_name', newName)
-    .then(() => response.status(202).json({
-      message: `Edit successful. Station with id of ${station_id} name changed from ${oldName} to ${newName}.`
-    }))
-    .catch(error => {
-      if (!station.length) return response.status(404).json({ error, message: `Station with id of ${station_id} was not found.`});
-      else if (!newName) return response.status(422).json({ error, message: `No station name provided.` });
-    });
-});
+	database('stations').where('station_name', oldName).update('station_name', newName)
+		.then(() => response.status(202).json({
+			message: `Edit successful. Station with id of ${station_id} name changed from ${oldName} to ${newName}.`
+		}))
+		.catch(error => response.status(500).json({
+				error: `Error updating station: ${error.message}`
+		}))
+})
 
 app.delete('/api/v1/stations/:station_id', (request, response) => {
   const { station_id } = request.params;
@@ -106,10 +148,6 @@ app.get('/api/v1/stations/:station_id/cafes', (request, response) => {
       error: error.message
     }));
 });
-
-// In API docs, need to explain how to query db
-// app.get('/api/v1/cafes?cafe_name=CAFE+NAME+HERE' or CAFE%20NAME%20COFFEE)
-// where spaces are separated by + (plus) characters OR %20
 
 app.get('/api/v1/cafes', (request, response) => {
   const { cafe_name } = request.query;
@@ -174,28 +212,23 @@ app.get('/api/v1/stations/:station_id/cafes/:cafe_id', (request, response) => {
     }));
 });
 
-app.put('/api/v1/stations/:station_id/cafes/:cafe_id', async (request, response) => {
-  const newName = request.body.cafe_name;
-  const { cafe_id, station_id } = request.params;
-  const cafe = await database('cafes').where({
-    'id': cafe_id,
-    station_id
-  }).select();
-  let oldName;
+app.put('/api/v1/stations/:station_id/cafes/:cafe_id', cafeLengthChecker, cafeParamChecker, async (request, response) => {
+	const newName = request.body.cafe_name;
+	const { cafe_id, station_id } = request.params
+	const cafe = await database('cafes').where({
+		'id': cafe_id,
+		station_id
+	}).select()
+	const oldName = cafe[0].cafe_name
 
-  if (cafe.length) {
-    oldName = cafe[0].cafe_name;
-  }
-
-  database('cafes').where('cafe_name', oldName).update('cafe_name', newName)
-    .then(cafe => response.status(202).json({
-      cafe,
-      message: `Edit successful. Cafe with id of ${cafe_id} name changed from ${oldName} to ${newName}.`}))
-    .catch(error => {
-      if (!cafe.length) return response.status(404).json({ error, message: `Cafe with id of ${cafe_id} was not found.`});
-      else if (!newName) return response.status(422).json({ error, message: `No cafe name provided.` });
-    });
-});
+	database('cafes').where('cafe_name', oldName).update('cafe_name', newName)
+		.then(cafe => response.status(202).json({
+			cafe,
+			message: `Edit successful. Cafe with id of ${cafe_id} name changed from ${oldName} to ${newName}.`}))
+		.catch(error => response.status(500).json({
+				error: `Error updating cafe: ${error.message}`
+		}))
+})
 
 app.delete('/api/v1/cafes/:cafe_id', (request, response) => {
   const { cafe_id } = request.params;
