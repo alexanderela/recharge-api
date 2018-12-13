@@ -24,18 +24,18 @@ exports.up = function(knex, Promise) {
       table.string('cross_street');
       table.string('formatted_address');
       table.integer('distance_in_meters').unsigned();
-      table.integer('station_id').unsigned()
+      table.integer('station_id').unsigned();
       table.foreign('station_id')
         .references('stations.id');
 
       table.timestamps(true, true);
     })
-  ])
+  ]);
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
     knex.schema.dropTable('cafes'),
     knex.schema.dropTable('stations')
-  ])
+  ]);
 };

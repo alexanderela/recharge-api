@@ -1439,6 +1439,6 @@ const fetchedStationCafes = [
       }
     ]
   }
-]
+];
 
-module.exports = fetchedStationCafes
+module.exports = fetchedStationCafes;
