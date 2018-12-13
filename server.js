@@ -120,7 +120,7 @@ app.put('/api/v1/stations/:station_id', stationLengthChecker, stationParamChecke
 			message: `Edit successful. Station with id of ${station_id} name changed from ${oldName} to ${newName}.`
 		}))
 		.catch(error => response.status(500).json({
-				error: `Error patching station: ${error.message}`
+				error: `Error updating station: ${error.message}`
 		}))
 })
 
