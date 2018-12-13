@@ -230,7 +230,7 @@ app.put('/api/v1/stations/:station_id/cafes/:cafe_id', cafeLengthChecker, cafePa
 			cafe,
 			message: `Edit successful. Cafe with id of ${cafe_id} name changed from ${oldName} to ${newName}.`}))
 		.catch(error => response.status(500).json({
-				error: `Error patching cafe: ${error.message}`
+				error: `Error updating cafe: ${error.message}`
 		}))
 })
 
