@@ -1,7 +1,11 @@
 body {
-  background: rgb(0, 79, 0);
-  color: white;
+  background-color: #edefed;
+  /*color: white;*/
   font-family: 'avenir';  
+}
+
+.charging-station {
+  background-color: #FFF;
 }
 
 .main-headline {
@@ -14,8 +18,8 @@ body {
 }
 
 article {
-  background: rgb(60, 60, 60);
-  border: 4px solid white;
+  /*background: rgb(60, 60, 60);*/
+  border: 4px solid #ff9800;
   margin: 20px;
   padding: 20px;
   border-radius: 5px;
@@ -26,7 +30,7 @@ article {
 }
 
 code {
-
+  color: #FFF;
 }
 
 .charging-station-title,
@@ -47,4 +51,5 @@ pre,
 
 .url {
   padding: 10px 100px;
+  color: #FFF;
 }
