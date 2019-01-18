@@ -4,9 +4,9 @@ body {
   font-family: 'avenir';  
 }
 
-.charging-station {
+/*.charging-station {
   background-color: #FFF;
-}
+}*/
 
 .main-headline {
   font-size: 2.25rem;
@@ -19,6 +19,7 @@ body {
 
 article {
   /*background: rgb(60, 60, 60);*/
+  background-color: #FFF;
   border: 4px solid #ff9800;
   margin: 20px;
   padding: 20px;
