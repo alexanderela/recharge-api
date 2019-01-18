@@ -37,6 +37,7 @@ code {
 
 pre {
   white-space: pre-wrap;
+  padding: 0 0 0 0.5rem;
 }
 
 pre,
