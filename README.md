@@ -234,5 +234,8 @@ Recharge API has a one-to-many relationship between recharging stations and cafe
 ![An illustration of the database schema](https://raw.githubusercontent.com/colehart/BYOBackend/master/public/assets/images/rechargeSchema.png "Database schema")
 
 
-## This is a partenered project designed and coded by Alexander Ela and Cole Hart.
+## This is a partenered project designed and coded by:
+* Alexander Ela - [Github.com/alexanderela](https://github.com/alexanderela)
+* Cole Hart - [Github.com/colehart](https://github.com/colehart)
+
 ## This README relied upon Open Food Source's extensive and excellent [Set Up](https://github.com/openfoodfoundation/openfoodnetwork/blob/master/GETTING_STARTED.md) and [Contibution](https://github.com/openfoodfoundation/openfoodnetwork/blob/master/CONTRIBUTING.md) docs.
