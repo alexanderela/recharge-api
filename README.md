@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/colehart/BYOBackend.svg?branch=master)](https://travis-ci.org/colehart/BYOBackend)
 
-# BYOBackend - Recharge API
+# Recharge API
 
 ## Recharge while you recharge! With Recharge API, you can query a sophisticated API to find Electric Vehicle (EV) charging stations and nearby cafes anywhere in the US or Canada. A Heroku-hosted PostgreSQL relational database and well-documented API built with Node.js, Express, and Knex.js.
 
