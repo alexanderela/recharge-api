@@ -1,8 +1,19 @@
 body {
-  background-color: #edefed;
+background: linear-gradient(#edefed, 10%, #b0b0b0);
   font-family: 'avenir';  
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.main-header-container {
+  background-color: #FFF;
+  padding: 0.5rem 2rem;
+  border-radius: 30px;
+  border: 4px solid #706e6e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -15,28 +26,19 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 20rem;
-  height: 4rem;
-}
-
-.bolt-car {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 6rem;
-}
-
-.fa-bolt {
-  font-size: 2.25rem;
-  color: yellow;
+  width: 10rem;
+  padding: 0 0 1rem;
+/*  border: 3px solid #706e6e;
+  border-radius: 30px;
+  background-color: #FFF;*/
 }
 
 .fa-car {
-  font-size: 4rem;  
+  font-size: 2rem;  
 }
 
 .fa-coffee {
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 
 .endpoint-title {
@@ -48,7 +50,7 @@ article {
   border: 4px solid #ff9800;
   margin: 20px;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 30px;
 }
 
 code {
