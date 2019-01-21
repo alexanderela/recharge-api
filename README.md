@@ -1,4 +1,5 @@
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/colehart/BYOBackend.svg?columns=all)](https://waffle.io/colehart/BYOBackend)
+
 [![Build Status](https://travis-ci.org/alexanderela/recharge-api.svg?branch=master)](https://travis-ci.org/alexanderela/recharge-api)
 
 # Recharge API
