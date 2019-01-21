@@ -237,7 +237,7 @@ describe('Server file', () => {
           expect(response).to.have.status(201);
           expect(response.body.id).to.equal(7);
           expect(response.body.message).to.equal(successMessage)
-          done()
+          done();
         })
     })
 
@@ -282,7 +282,7 @@ describe('Server file', () => {
           expect(response).to.have.status(200);
           expect(firstEntry.cafe_name).to.equal(expectedEntry.cafe_name)
           expect(firstEntry.cross_street).to.equal(expectedEntry.cross_street)
-          done()
+          done();
         })
     })
 
