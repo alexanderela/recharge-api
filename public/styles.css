@@ -22,25 +22,6 @@ background: linear-gradient(#edefed, 10%, #b0b0b0);
   text-align: center;
 }
 
-.icon-header {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 10rem;
-  padding: 0 0 1rem;
-/*  border: 3px solid #706e6e;
-  border-radius: 30px;
-  background-color: #FFF;*/
-}
-
-.fa-car {
-  font-size: 2rem;  
-}
-
-.fa-coffee {
-  font-size: 1.5rem;
-}
-
 .endpoint-title {
   font-size: 1.75rem;
 }
