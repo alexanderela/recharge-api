@@ -1,13 +1,12 @@
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/colehart/BYOBackend.svg?columns=all)](https://waffle.io/colehart/BYOBackend)
-
-[![Build Status](https://travis-ci.org/colehart/BYOBackend.svg?branch=master)](https://travis-ci.org/colehart/BYOBackend)
+[![Build Status](https://travis-ci.org/alexanderela/recharge-api.svg?branch=master)](https://travis-ci.org/alexanderela/recharge-api)
 
 # Recharge API
 
 ## Recharge while you recharge! With Recharge API, you can query a sophisticated API to find Electric Vehicle (EV) charging stations and nearby cafes anywhere in the US or Canada. A Heroku-hosted PostgreSQL relational database and well-documented API built with Node.js, Express, and Knex.js.
 
 ## How to Use
-Query the Recharge API on Heroku: [https://recharge-api.herokuapp.com/](https://recharge-api.herokuapp.com/).
+Query the Recharge API on Heroku: [https://recharge-api-v2.herokuapp.com/](https://recharge-api-v2.herokuapp.com/).
 
 See [API Endpoints](#api-endpoints) below for endpoint details.
 
