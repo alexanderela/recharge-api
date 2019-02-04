@@ -53,7 +53,8 @@ git fetch upstream master
 #### Create Postgres Development Database and Run Migrations
 *  Create a test database on your local machine:
 ```
-psql CREATE DATABASE rechargeables
+psql
+CREATE DATABASE movie_tracker_backend;
 ```
 
 * Run migrations to set up your database schema
