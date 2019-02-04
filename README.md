@@ -69,7 +69,8 @@ knex seed:run
 #### Testing
 * Create a testing database
 ```
-psql CREATE DATABASE rechargeables_test
+psql
+CREATE DATABASE movie_tracker_backend_test;
 ```
 * Run tests in the test environment:
 ```
