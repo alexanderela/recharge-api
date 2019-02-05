@@ -31,7 +31,7 @@ git clone https://github.com/YOUR_GITHUB_USERNAME_HERE/BYOBackend
 
 * Jump into that directory on your local machine
 ```
-cd BYOBackend
+cd recharge-api
 ```
 
 * Add an upstream remote that points to the main repo:
@@ -54,7 +54,7 @@ git fetch upstream master
 *  Create a test database on your local machine:
 ```
 psql
-CREATE DATABASE movie_tracker_backend;
+CREATE DATABASE recharge_api;
 ```
 
 * Run migrations to set up your database schema
@@ -71,7 +71,7 @@ knex seed:run
 * Create a testing database
 ```
 psql
-CREATE DATABASE movie_tracker_backend_test;
+CREATE DATABASE recharge_api_test;
 ```
 * Run tests in the test environment:
 ```
